@@ -41,7 +41,7 @@ public class EncurtadorService {
                     .randomUUID()
                     .toString()
                     .replaceAll("^[a-zA-Z0-9]*$", "")
-                    .substring(0, 5)
+                    .substring(0, 10)
                     .toUpperCase();
 
             // só para garantir que não criou uma url repetida
