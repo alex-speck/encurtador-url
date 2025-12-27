@@ -10,6 +10,7 @@ import speck.desafio.spring_boot.encurtador_url.dto.UrlDTO;
 import speck.desafio.spring_boot.encurtador_url.service.EncurtadorService;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 
 @Controller
 @RequestMapping("/")
@@ -33,17 +34,16 @@ public class EncurtadorController {
 
     @GetMapping("/{shortened-url}")
     public ResponseEntity<?> buscarUrl(@PathVariable("shortened-url") String url){
-        try{
+
             UrlDTO urlOriginal = service.buscarUrl(url);
 
             HttpHeaders headers = new HttpHeaders();
+        try {
             headers.setLocation(new URI(urlOriginal.url()));
-
-            return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
-        }   catch (NullPointerException e) {
-            return ResponseEntity.notFound().build();
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body(new ResponseUtil(e.getLocalizedMessage()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e.getLocalizedMessage());
         }
+
+        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
     }
 }

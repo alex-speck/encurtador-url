@@ -20,6 +20,9 @@ public class EnderecoUrl {
     @Column(nullable = false, name = "expira_em")
     private OffsetDateTime expiraEm;
 
+    public EnderecoUrl() {
+    }
+
     public EnderecoUrl(String urlOriginal, String urlEncurtada, OffsetDateTime criadoEm, OffsetDateTime expiraEm) {
         this.urlOriginal = urlOriginal;
         this.urlEncurtada = urlEncurtada;
