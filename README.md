@@ -70,6 +70,17 @@ O serviço permite converter URLs longas em versões curtas e realizar o redirec
 
 ---
 
+
+
+
+## ▶️ Executando o Projeto
+
+```bash
+git clone https://github.com/alex-speck/encurtador-url.git
+cd encurtador-url
+mvn spring-boot:run
+```
+
 ## 🗄️ Configuração do PostgreSQL
 
 ### 1️⃣ Criar o banco de dados
@@ -90,16 +101,6 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
-```
-
----
-
-## ▶️ Executando o Projeto
-
-```bash
-git clone https://github.com/alex-speck/encurtador-url.git
-cd encurtador-url
-mvn spring-boot:run
 ```
 
 A aplicação estará disponível em:
